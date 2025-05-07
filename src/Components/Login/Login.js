@@ -9,6 +9,36 @@ const Login = () => {
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
     };
+    const [formData, setFormData] = useState({
+        email: "",
+        password: ""
+      });
+      const [errors, setErrors] = useState({});
+    
+      const handleChange = e => {
+        const { name, value } = e.target;
+        setFormData(f => ({ ...f, [name]: value }));
+      };
+    
+      const validate = () => {
+        const newErrors = {};
+        if (!formData.email.includes("@")) {
+          newErrors.email = "Correo inválido.";
+        }
+        if (formData.password.length < 6) {
+          newErrors.password = "La contraseña debe tener al menos 6 caracteres.";
+        }
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+      };
+    
+      const handleSubmit = e => {
+        e.preventDefault();
+        if (validate()) {
+          alert("Inicio de sesión exitoso");
+          // llamar tu API o redirigir...
+        }
+      };
     return (
         <div>
             
@@ -24,7 +54,7 @@ const Login = () => {
                         ¿No tienes una cuenta?{" "}
                         <span>
                             <a
-                                href="../SignUp/Sign_Up.html"
+                                href="/signup"
                                 style={{ color: "#2190FF" }}
                             >
                                 Regístrate
@@ -32,7 +62,7 @@ const Login = () => {
                         </span>
                     </div>
                     <div className="signup-form">
-                        <form>
+                        <form onSubmit={handleSubmit} onReset={() => setErrors({})}>
                             <div className="form-group">
                                 <label htmlFor="email">Correo electrónico</label>
                                 <input
@@ -40,9 +70,12 @@ const Login = () => {
                                     name="email"
                                     id="email"
                                     required
+                                    value={formData.email}
+                                    onChange={handleChange}
                                     className="form-control"
                                     placeholder="Ingresa tu correo electrónico"
                                 />
+                                {errors.email && <small className="error">{errors.email}</small>}
                             </div>
                             <div className="form-group">
                                 <label htmlFor="password">Contraseña</label>
@@ -51,6 +84,8 @@ const Login = () => {
                                     name="password"
                                     id="password"
                                     required
+                                    value={formData.password}
+                                    onChange={handleChange}
                                     className="form-control"
                                     placeholder="Ingresa tu contraseña"
                                 />
@@ -61,6 +96,7 @@ const Login = () => {
                                 >
                                     👁️
                                 </span>
+                                {errors.password && <small className="error">{errors.password}</small>}
                             </div>
                             <div className="btn-group">
                                 <button type="submit" className="btn btn-primary">
