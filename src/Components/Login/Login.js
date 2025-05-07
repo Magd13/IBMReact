@@ -1,10 +1,19 @@
 import { useNavigate } from "react-router-dom";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Login.css'
+import { API_URL } from "../../config";
 
 const Login = () => {
     const navigate = useNavigate()
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [passwordVisible, setPasswordVisible] = useState(false);
+
+    useEffect(() => {
+      if (sessionStorage.getItem('auth-token')) {
+        navigate('/');
+      }
+    }, [navigate]);
 
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
@@ -22,22 +31,43 @@ const Login = () => {
     
       const validate = () => {
         const newErrors = {};
-        if (!formData.email.includes("@")) {
+        if (!email.includes("@")) {
           newErrors.email = "Correo inválido.";
         }
-        if (formData.password.length < 6) {
+        if (password.length < 6) {
           newErrors.password = "La contraseña debe tener al menos 6 caracteres.";
         }
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
       };
     
-      const handleSubmit = e => {
+      const loginUser = async (e) => {
         e.preventDefault();
-        if (validate()) {
-          alert("Inicio de sesión exitoso");
-          // llamar tu API o redirigir...
-        }
+        if (!validate()) return
+            try {
+                const res = await fetch(`${API_URL}/api/auth/login`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ email, password }),
+                });
+                const json = await res.json();
+                if (json.authtoken) {
+                  alert("Inicio de sesión exitoso");
+                  sessionStorage.setItem('auth-token', json.authtoken);
+                  sessionStorage.setItem('email', email);
+                  navigate('/');
+                  window.location.reload();
+                } else {
+                  if (json.errors) {
+                    json.errors.forEach(err => alert(err.msg));
+                  } else {
+                    alert(json.error);
+                  }
+                }
+              } catch (err) {
+                alert('No se pudo conectar con el servidor.');
+              }
+        
       };
     return (
         <div>
@@ -62,7 +92,7 @@ const Login = () => {
                         </span>
                     </div>
                     <div className="signup-form">
-                        <form onSubmit={handleSubmit} onReset={() => setErrors({})}>
+                        <form onSubmit={loginUser} onReset={() => setErrors({})}>
                             <div className="form-group">
                                 <label htmlFor="email">Correo electrónico</label>
                                 <input
@@ -70,8 +100,8 @@ const Login = () => {
                                     name="email"
                                     id="email"
                                     required
-                                    value={formData.email}
-                                    onChange={handleChange}
+                                    value={email}
+                                    onChange={e => setEmail(e.target.value)}
                                     className="form-control"
                                     placeholder="Ingresa tu correo electrónico"
                                 />
@@ -84,8 +114,8 @@ const Login = () => {
                                     name="password"
                                     id="password"
                                     required
-                                    value={formData.password}
-                                    onChange={handleChange}
+                                    value={password}
+                                    onChange={e => setPassword(e.target.value)}
                                     className="form-control"
                                     placeholder="Ingresa tu contraseña"
                                 />
