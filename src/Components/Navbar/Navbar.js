@@ -8,16 +8,13 @@ const Navbar = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
 
-  // Manejador del icono de menú
   const handleClick = () => setClick(!click);
 
-  // Cerrar sesión: limpia almacenamiento y recarga la página
   const handleLogout = () => {
     sessionStorage.removeItem('auth-token');
     sessionStorage.removeItem('name');
     sessionStorage.removeItem('email');
     sessionStorage.removeItem('phone');
-    // Limpiar datos de reviews en localStorage
     Object.keys(localStorage).forEach(key => {
       if (key.startsWith('reviewFormData_')) {
         localStorage.removeItem(key);
@@ -29,7 +26,6 @@ const Navbar = () => {
     window.location.reload();
   };
 
-  // Al cargar: comprueba si hay email en sessionStorage y extrae nombre
   useEffect(() => {
     const storedEmail = sessionStorage.getItem('email');
     if (storedEmail) {
@@ -87,6 +83,11 @@ const Navbar = () => {
             <li className="link">
               <Link to="/login">
                 <button className="btn1">Iniciar Sesión</button>
+              </Link>
+            </li>
+            <li className="link">
+              <Link to="/instant-consultation">
+                <button className="btn1">Consulta Instantanea</button>
               </Link>
             </li>
           </>
