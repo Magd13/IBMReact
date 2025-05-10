@@ -103,8 +103,11 @@ const SignUp = () => {
                   type="text"
                   name="name"
                   id="name"
-                  value={formData.name}
-                  onChange={e => setName(e.target.value)}
+                  value={name}
+                  onChange={e => {
+                    setName(e.target.value);
+                    setFormData(prev => ({ ...prev, name: e.target.value }));
+                  }}
                   className="form-control"
                   placeholder="Ingresa tu nombre"
                 />
@@ -117,8 +120,11 @@ const SignUp = () => {
                   type="tel"
                   name="phone"
                   id="phone"
-                  value={formData.phone}
-                  onChange={e => setPhone(e.target.value)}
+                  value={phone}
+                  onChange={e => {
+                    setPhone(e.target.value);
+                    setFormData(prev => ({ ...prev, phone: e.target.value }));
+                  }}
                   className="form-control"
                   placeholder="Ingresa tu número de teléfono"
                 />
@@ -131,8 +137,11 @@ const SignUp = () => {
                   type="email"
                   name="email"
                   id="email"
-                  value={formData.email}
-                  onChange={e => setEmail(e.target.value)}
+                  value={email}
+                  onChange={e => {
+                    setEmail(e.target.value);
+                    setFormData(prev => ({ ...prev, email: e.target.value }));
+                  }}
                   className="form-control"
                   placeholder="Ingresa tu correo electrónico"
                 />
@@ -145,8 +154,11 @@ const SignUp = () => {
                   type="password"
                   name="password"
                   id="password"
-                  value={formData.password}
-                  onChange={e => setPassword(e.target.value)}
+                  value={password}
+                  onChange={e => {
+                    setPassword(e.target.value);
+                    setFormData(prev => ({ ...prev, password: e.target.value }));
+                  }}
                   className="form-control"
                   placeholder="Ingresa tu contraseña"
                 />
