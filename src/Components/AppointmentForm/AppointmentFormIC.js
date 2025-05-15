@@ -13,13 +13,30 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit }) => {
     };
   
     const handleFormSubmit = (e) => {
-      e.preventDefault();
-      onSubmit({ name, phoneNumber });
-      setName('');
-      setPhoneNumber('');
-      setDate('');
-      setTime('');
-      setSlot('');
+        const appointment = {
+          userName: name,
+          phoneNumber,
+          datetime: `${date}T${time}`,  // ISO
+          status: 'scheduled',
+          slot,
+        };
+
+        // 2) Guarda doctorData y appointmentData en localStorage
+        localStorage.setItem(
+          'doctorData',
+          JSON.stringify({ name: doctorName, speciality: doctorSpeciality })
+        );
+        localStorage.setItem(
+          doctorName,
+          JSON.stringify(appointment)
+        );
+        e.preventDefault();
+        onSubmit(appointment);
+        setName('');
+        setPhoneNumber('');
+        setDate('');
+        setTime('');
+        setSlot('');
     };
   
     return (

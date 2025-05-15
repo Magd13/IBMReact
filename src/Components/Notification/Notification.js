@@ -11,6 +11,7 @@ const Notification = ({ children }) => {
   const [showNotification, setShowNotification] = useState(true);
 
   useEffect(() => {
+    console.log('storage', localStorage)
     const storedUsername        = sessionStorage.getItem('email');
     const storedDoctorData      = JSON.parse(localStorage.getItem('doctorData'));
     const storedAppointmentData = JSON.parse(
