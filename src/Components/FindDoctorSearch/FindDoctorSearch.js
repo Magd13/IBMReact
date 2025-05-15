@@ -7,7 +7,7 @@ const initSpeciality = [
     'Dentist', 'Gynecologist/obstetrician', 'General Physician', 'Dermatologist', 'Ear-nose-throat (ent) Specialist', 'Homeopath', 'Ayurveda'
 ]
 
-const FindDoctorSearchIC = () => {
+const FindDoctorSearch = () => {
     const [doctorResultHidden, setDoctorResultHidden] = useState(true);
     const [searchDoctor, setSearchDoctor] = useState('');
     const [specialities, setSpecialities] = useState(initSpeciality);
@@ -25,7 +25,6 @@ const FindDoctorSearchIC = () => {
                 <div>               <i style={{color:'#000000',fontSize:'20rem'}} className="fa fa-user-md"></i>
 </div>                <div className="home-search-container"  style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                     <div className="doctor-search-box">
-                    {/* <p>Perform a search to see the results.</p> */}
 
                         <input type="text" className="search-doctor-input-box" placeholder="Search doctors, clinics, hospitals, etc." onFocus={() => setDoctorResultHidden(false)} onBlur={() => setDoctorResultHidden(true)} value={searchDoctor} onChange={(e) => setSearchDoctor(e.target.value)} />
                         
@@ -46,4 +45,4 @@ const FindDoctorSearchIC = () => {
     )
 }
 
-export default FindDoctorSearchIC
+export default FindDoctorSearch

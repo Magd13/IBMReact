@@ -19,7 +19,7 @@ const ReviewForm = ({ doctorName, speciality }) => {
           <p><strong>Doctor:</strong> {doctorName}</p>
           <p><strong>Especialidad:</strong> {speciality}</p>
           <button className="feedback-button" onClick={() => setShowForm(true)}>
-            Proveer Feedback
+            Proveer Feedbackw
           </button>
         </div>
       ) : (

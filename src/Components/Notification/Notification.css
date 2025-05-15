@@ -1,0 +1,36 @@
+.notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 280px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-left: 4px solid #007bff;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    padding: 16px;
+    z-index: 1000;
+    font-family: Arial, sans-serif;
+  }
+  
+  .notification-close-btn {
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .notification-title {
+    margin: 0 0 8px;
+    font-size: 16px;
+    color: #007bff;
+  }
+  
+  .notification-container p {
+    margin: 4px 0;
+    font-size: 14px;
+  }
+  
