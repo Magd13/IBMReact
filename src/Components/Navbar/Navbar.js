@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
@@ -9,6 +9,18 @@ const Navbar = () => {
   const [username, setUsername] = useState("");
 
   const handleClick = () => setClick(!click);
+  const [open, setOpen] = useState(false);
+  const ref = useRef();
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const handleLogout = () => {
     sessionStorage.removeItem('auth-token');
@@ -67,13 +79,18 @@ const Navbar = () => {
 
         {isLoggedIn ? (
           <>
-            <li className="link">
-              <span className="nav__user">Hola, {username}</span>
-            </li>
-            <li className="link">
-              <button className="btn2" onClick={handleLogout}>
-                Cerrar sesión
-              </button>
+            <li className="link user-menu" ref={ref}>
+              <span className="nav__user"  onClick={() => setOpen(!open)}>
+                Hola, {username}<span className="arrow">{open ? '▲' : '▼'}</span>
+              </span>
+              {open && (
+                <ul className="menu-dropdown">
+                  <li onClick={() => { setOpen(false) }}>
+                    <Link to='/profile'>Tu Perfil</Link>
+                    </li>
+                  <li onClick={() => { setOpen(false); handleLogout(); }}>Cerrar Sesión</li>
+                </ul>
+              )}
             </li>
           </>
         ) : (

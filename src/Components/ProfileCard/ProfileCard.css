@@ -1,0 +1,75 @@
+
+/* El siguiente código ha sido comentado con comentarios apropiados para su referencia.
+*/
+/* Estilos para el contenedor que contiene la información del perfil */
+.profile-container {
+    max-width: 400px; /* Establecer el ancho máximo del contenedor a 400 píxeles */
+    margin: 15% auto; /* Centrar el contenedor horizontalmente con un margen superior del 15% */
+    padding: 20px; /* Agregar 20 píxeles de padding dentro del contenedor */
+    background-color: #f5f5f5; /* Establecer el color de fondo del contenedor a gris claro */
+    border-radius: 4px; /* Aplicar un radio de borde de 4 píxeles para redondear las esquinas */
+}
+
+/* Estilos para el encabezado dentro del contenedor del perfil */
+.profile-container h1 {
+    margin-top: 0; /* Eliminar cualquier margen superior del encabezado */
+}
+
+/* Estilos para el formulario dentro del contenedor del perfil */
+.profile-container form {
+    margin-bottom: 20px; /* Agregar un margen inferior de 20 píxeles al formulario */
+}
+
+/* Estilos para las etiquetas dentro del contenedor del perfil */
+.profile-container label {
+    display: block; /* Mostrar etiquetas como elementos de bloque para apilarlas verticalmente */
+    margin-bottom: 10px; /* Agregar un margen inferior de 10 píxeles para separar etiquetas */
+}
+
+/* Estilos para los campos de entrada de texto y correo electrónico dentro del contenedor del perfil */
+.profile-container input[type="text"],
+.profile-container input[type="email"] {
+    width: 100%; /* Establecer el ancho de las entradas de texto y correo electrónico al 100% del contenedor */
+    padding: 8px; /* Agregar 8 píxeles de padding dentro de los campos de entrada */
+    border: 1px solid #ccc; /* Aplicar un borde sólido de 1 píxel con color gris claro */
+    border-radius: 4px; /* Redondear las esquinas de los campos de entrada con un radio de borde de 4 píxeles */
+}
+
+/* Estilos para los botones dentro del contenedor del perfil */
+.profile-container button {
+    display: block; /* Mostrar botones como elementos de bloque para que ocupen todo el ancho */
+    width: 100%; /* Establecer el ancho de los botones al 100% del contenedor */
+    padding: 8px; /* Agregar 8 píxeles de padding dentro de los botones */
+    background-color: #2190ff; /* Establecer el color de fondo de los botones a un tono azul */
+    color: #fff; /* Establecer el color del texto de los botones a blanco */
+    border: none; /* Eliminar los bordes de los botones */
+    border-radius: 4px; /* Aplicar un radio de borde de 4 píxeles para redondear las esquinas de los botones */
+    cursor: pointer; /* Cambiar el cursor a puntero al pasar sobre los botones */
+}
+
+/* Estilos para el contenedor que contiene detalles adicionales del perfil */
+.profile-details {
+    background-color: #fff; /* Establecer el color de fondo del contenedor de detalles a blanco */
+    border-radius: 4px; /* Aplicar un radio de borde de 4 píxeles para redondear las esquinas */
+    padding: 20px; /* Agregar 20 píxeles de padding dentro del contenedor de detalles */
+}
+
+/* Estilos para los encabezados dentro del contenedor de detalles del perfil */
+.profile-details h2 {
+    margin-top: 0; /* Eliminar cualquier margen superior de los encabezados dentro del contenedor de detalles */
+}
+
+/* Estilos para los párrafos dentro del contenedor de detalles del perfil */
+.profile-details p {
+    margin-bottom: 10px; /* Agregar un margen inferior de 10 píxeles para separar párrafos */
+}
+
+/* Estilos para los botones dentro del contenedor de detalles del perfil */
+.profile-details button {
+    background-color: #2190ff; /* Establecer el color de fondo de los botones a un tono azul */
+    color: #fff; /* Establecer el color del texto de los botones a blanco */
+    border: none; /* Eliminar los bordes de los botones */
+    border-radius: 4px; /* Aplicar un radio de borde de 4 píxeles para redondear las esquinas de los botones */
+    padding: 8px 12px; /* Agregar padding dentro de los botones (8 píxeles arriba/abajo, 12 píxeles izquierda/derecha) */
+    cursor: pointer; /* Cambiar el cursor a puntero al pasar sobre los botones en el contenedor de detalles */
+}
