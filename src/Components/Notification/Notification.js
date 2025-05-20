@@ -11,14 +11,12 @@ const Notification = ({ children }) => {
   const [showNotification, setShowNotification] = useState(true);
 
   useEffect(() => {
-    console.log('storage', localStorage)
     const storedUsername        = sessionStorage.getItem('email');
     const storedDoctorData      = JSON.parse(localStorage.getItem('doctorData'));
     const storedAppointmentData = JSON.parse(
       localStorage.getItem(storedDoctorData?.name)
     );
 
-    console.log('appotment', storedAppointmentData, storedDoctorData, storedUsername)
     if (storedUsername) {
       setIsLoggedIn(true);
       setUsername(storedUsername);
@@ -48,7 +46,6 @@ const Notification = ({ children }) => {
     return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
 
-  console.log('log', isLoggedIn, showNotification, appointmentData)
   return (
     <div>
       <Navbar />
