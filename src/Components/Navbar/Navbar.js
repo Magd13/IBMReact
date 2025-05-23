@@ -87,7 +87,10 @@ const Navbar = () => {
                 <ul className="menu-dropdown">
                   <li onClick={() => { setOpen(false) }}>
                     <Link to='/profile'>Tu Perfil</Link>
-                    </li>
+                  </li>
+                  <li onClick={() => { setOpen(false) }}>
+                    <Link to='/reports'>Tus Reportes</Link>
+                  </li>
                   <li onClick={() => { setOpen(false); handleLogout(); }}>Cerrar Sesión</li>
                 </ul>
               )}
